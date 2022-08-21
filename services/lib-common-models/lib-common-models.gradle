@@ -1,0 +1,20 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+}
+
+apply plugin: "java"
+
+dependencies {
+    implementation libraries.gson
+    implementation(libraries.swagger2) {
+        exclude group: 'io.springfox'
+        exclude group: 'com.fasterxml'
+        exclude group: 'org.springframework.plugin'
+        exclude group: 'org.slf4j'
+        exclude group: 'org.mapstruct'
+        exclude module: 'swagger-models'
+    }
+}

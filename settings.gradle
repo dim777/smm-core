@@ -1,0 +1,29 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven {
+            name "Ineb Gradle Snapshot Plugins"
+            url  "https://nexus.i-neb.net/repository/maven-snapshots/"
+        }
+        maven {
+            name "Ineb Gradle Release Plugins"
+            url  "https://nexus.i-neb.net/repository/maven-releases/"
+        }
+    }
+}
+
+include 'svc-sport-manager-api'
+include 'lib-common-strava'
+include 'lib-common-models'
+include 'lib-common-entities'
+
+rootProject.name = 'sport-media-manager'
+rootProject.children.each { service ->
+    String fileBaseName = service.name.replaceAll("\\p{Upper}") { "-${it.toLowerCase()}" }
+    String projectDirName = "services/$fileBaseName"
+
+    service.projectDir = new File(settingsDir, projectDirName)
+    service.buildFileName = "${fileBaseName}.gradle"
+    assert service.projectDir.isDirectory()
+    assert service.buildFile.isFile()
+}

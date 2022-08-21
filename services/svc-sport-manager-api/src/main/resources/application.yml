@@ -1,0 +1,17 @@
+server:
+  port: 8800
+
+
+spring:
+  application.name: ${APPLICATION_NAME:sport-media-manager-api}
+  liquibase:
+    change-log: classpath:db/changelog/databaseChangeLog.yml
+    liquibase-schema: public
+    contexts: "!local-test"
+    enabled: true
+
+keycloak:
+  auth-server-url: http://localhost:8080/auth
+  realm: smm
+  resource: ${APPLICATION_NAME:sport-media-manager-api}
+  public-client: true

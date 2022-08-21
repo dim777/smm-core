@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id 'jooq-modelator-plugin' version "$jooqModelator"
+}
+
+dependencies {
+    implementation libraries.gson
+    implementation libraries.jooq
+    runtimeOnly libraries.postgresql
+    jooqModelatorRuntime libraries.postgresql
+}
+
+jooqModelator {
+    jooqVersion = versions.jooqVersion
+    jooqEdition = 'OSS'
+    jooqConfigPath = "$rootDir/services/svc-sport-manager-api/src/main/resources/jooq/jooqConfiguration.xml"
+    jooqOutputPath = "$buildDir/generated"
+    jooqEntitiesPath = "$buildDir/generated/jooq/src/main/java"
+    migrationEngine = 'LIQUIBASE'
+    migrationsPaths = ["$rootDir/services/svc-sport-manager-api/src/main/resources/db/changelog".toString()]
+    dockerTag = 'postgres:14.2'
+    dockerEnv = ['POSTGRES_DB=postgres', 'POSTGRES_USER=postgres', 'POSTGRES_PASSWORD=secret']
+    dockerHostPort = 5432
+    dockerContainerPort = 5432
+}
+
+tasks.build.dependsOn("generateJooqMetamodel")
+
+sourceSets {
+    main {
+        java.srcDirs += ["${buildDir}/generated/jooq/src/main/java"]
+    }
+}
+
+compileJava {
+    dependsOn("generateJooqMetamodel")
+}

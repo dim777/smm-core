@@ -1,0 +1,33 @@
+###
+
+# curl -X POST https://www.strava.com/api/v3/oauth/token
+#  -d client_id=ReplaceWithClientID
+#  -d client_secret=ReplaceWithClientSecret
+#  -d code=ReplaceWithCode
+#  -d grant_type=authorization_code
+#POST https://www.strava.com/api/v3/oauth/token
+#Content-Type: application/x-www-form-urlencoded
+#
+#client_id=ReplaceWithClientID&client_secret=ReplaceWithClientSecret&code=ReplaceWithCode&grant_type=authorization_code
+POST https://www.strava.com/api/v3/oauth/token
+Content-Type: application/json
+
+{
+  "client_id": "...",
+  "client_secret": "...",
+  "code": "...",
+  "grant_type": "authorization_code"
+}
+
+###
+
+# curl -X GET
+#https://www.strava.com/api/v3/athlete
+#-H 'Authorization: Bearer YOURACCESSTOKEN'
+GET https://www.strava.com/api/v3/athlete
+Authorization: Bearer ...
+
+###
+
+DELETE https://www.strava.com/athletes/25076752/follows/870858238?stm_source=stm-source-follow-follows-index
+Authorization: Bearer ...

@@ -1,0 +1,86 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+        maven { url 'https://repo.spring.io/libs-milestone' }
+        maven { url 'https://plugins.gradle.org/m2/' }
+    }
+}
+
+plugins {
+    id "de.marcphilipp.nexus-publish" version "0.4.0"
+    id "org.sonarqube" version "2.7"
+}
+
+apply from: "$rootDir/gradle/dependencies.gradle"
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven'
+
+    sourceCompatibility = '11'
+    targetCompatibility = '11'
+
+    compileJava.options.encoding = "UTF-8"
+    compileTestJava.options.encoding = "UTF-8"
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+        maven { url 'https://repo.spring.io/libs-milestone' }
+        maven { url 'http://packages.confluent.io/maven/' }
+    }
+    ext {
+        compileProjectWithoutTransitive = { ctx, serviceName ->
+            ctx.compile(project(":$serviceName")) {
+                transitive = false
+            }
+        }
+    }
+
+    dependencies {
+        compileOnly libraries.lombok
+        annotationProcessor libraries.lombok
+        testCompileOnly libraries.lombok
+        testAnnotationProcessor libraries.lombok
+    }
+}
+
+subprojects {
+    apply plugin: 'maven-publish'
+    apply plugin: 'java'
+
+    group = 'tech.ineb.sport'
+
+    jar {
+        into("META-INF/maven/$project.group/$project.name") {
+            from { generatePomFileForMavenJavaPublication }
+            rename ".*", "pom.xml"
+        }
+    }
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
+            }
+        }
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+        maven { url 'https://repo.spring.io/libs-milestone' }
+    }
+}
+
+wrapper {
+    gradleVersion = '5.6'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}

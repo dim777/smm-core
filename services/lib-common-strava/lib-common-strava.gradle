@@ -1,0 +1,48 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath "org.openapitools:openapi-generator-gradle-plugin:5.0.0-beta2"
+    }
+}
+
+apply plugin: "java"
+apply plugin: "org.openapi.generator"
+
+dependencies {
+    implementation libraries.swagger2
+    implementation libraries.swagger_ui
+    implementation libraries.gson
+    implementation libraries.guava
+    implementation libraries.javaxAnnotation
+    implementation libraries.jooq
+}
+
+tasks.build.dependsOn(tasks.openApiGenerate)
+
+openApiGenerate {
+    generatorName = "java"
+    verbose = true
+    validateSpec = false
+    skipValidateSpec = true
+    inputSpec = "$rootDir/services/lib-common-strava/src/main/resources/strava/swagger.json"
+    outputDir = "$buildDir/generated".toString()
+    apiPackage = "tech.ineb.sport.lib.common.strava.client.api"
+    modelPackage = "tech.ineb.sport.lib.common.strava.model"
+    modelFilesConstrainedTo = [""]
+    apiFilesConstrainedTo = ["Error"]
+    supportingFilesConstrainedTo = ["Error"]
+    configOptions = [dateLibrary: "java8"]
+}
+
+sourceSets {
+    main {
+        java.srcDirs += ["${buildDir}/generated/src/main/java/"]
+    }
+}
+
+compileJava {
+    dependsOn tasks.openApiGenerate
+}

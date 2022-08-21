@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<configuration>
+    <jdbc>
+        <driver>org.postgresql.Driver</driver>
+        <url>jdbc:postgresql://localhost:5432/postgres?currentSchema=public</url>
+        <user>postgres</user>
+        <password>secret</password>
+    </jdbc>
+    <generator>
+        <database>
+            <name>org.jooq.meta.postgres.PostgresDatabase</name>
+            <inputSchema>sm</inputSchema>
+            <recordVersionFields>version</recordVersionFields>
+            <forcedTypes>
+                <forcedType>
+                    <userType>com.google.gson.JsonElement</userType>
+                    <binding>tech.ineb.sport.lib.common.models.utils.PostgresJSONGsonBinding</binding>
+                    <includeExpression>.*</includeExpression>
+                    <includeTypes>.*jsonb.*</includeTypes>
+                </forcedType>
+            </forcedTypes>
+        </database>
+        <target>
+            <packageName>tech.ineb.sport.lib.common.models</packageName>
+            <directory>/Users/d.erokhin/Documents/projects/sport-media-manager/services/lib-common-entities/build/generated/src/main/java</directory>
+        </target>
+        <generate>
+            <javaTimeTypes>true</javaTimeTypes>
+            <daos>true</daos>
+        </generate>
+    </generator>
+</configuration>

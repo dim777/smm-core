@@ -10,7 +10,7 @@ import java.util.concurrent.Executor;
 /**
  * This class maintains ...
  *
- * @author Dmitriy Erokhin d.erokhin@corp.mail.ru
+ * @author Dmitriy Erokhin dim777@ya.ru
  */
 @Configuration @EnableAsync
 public class AsyncConfig {

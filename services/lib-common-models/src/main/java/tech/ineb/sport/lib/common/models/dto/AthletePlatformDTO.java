@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * This class maintains ...
  *
- * @author Dmitriy Erokhin d.erokhin@corp.mail.ru
+ * @author Dmitriy Erokhin dim777@ya.ru
  */
 @Data
 public class AthletePlatformDTO {

@@ -14,7 +14,7 @@ import java.util.function.Function;
  * This class maintains ...
  * todo session registry should be migrated to interface with scheduled cache purge
  *
- * @author Dmitriy Erokhin d.erokhin@corp.mail.ru
+ * @author Dmitriy Erokhin dim777@ya.ru
  */
 @AllArgsConstructor @Component @Slf4j
 public class SessionRegistry {

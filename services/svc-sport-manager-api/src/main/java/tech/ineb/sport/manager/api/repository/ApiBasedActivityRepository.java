@@ -1,5 +1,6 @@
 package tech.ineb.sport.manager.api.repository;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpMethod;
@@ -12,7 +13,6 @@ import tech.ineb.sport.lib.common.strava.model.DetailedActivity;
 import tech.ineb.sport.manager.api.config.AppConfig;
 import tech.ineb.sport.manager.api.mappers.ActivityMapper;
 
-import javax.validation.constraints.NotNull;
 import java.net.URI;
 import java.util.Optional;
 import java.util.UUID;
@@ -24,7 +24,7 @@ import java.util.concurrent.TimeoutException;
 /**
  * This class maintains ...
  *
- * @author Dmitriy Erokhin d.erokhin@corp.mail.ru
+ * @author Dmitriy Erokhin dim777@ya.ru
  */
 @Repository
 @AllArgsConstructor

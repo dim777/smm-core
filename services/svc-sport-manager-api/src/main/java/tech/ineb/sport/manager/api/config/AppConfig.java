@@ -1,5 +1,8 @@
 package tech.ineb.sport.manager.api.config;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -11,9 +14,6 @@ import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PositiveOrZero;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -25,7 +25,7 @@ import java.util.concurrent.Executors;
 /**
  * This class maintains ...
  *
- * @author Dmitriy Erokhin d.erokhin@corp.mail.ru
+ * @author Dmitriy Erokhin dim777@ya.ru
  */
 @Configuration @Slf4j
 public class AppConfig {

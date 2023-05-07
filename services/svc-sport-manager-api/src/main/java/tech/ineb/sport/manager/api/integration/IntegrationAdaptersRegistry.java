@@ -14,7 +14,7 @@ import java.util.Objects;
 /**
  * This class maintains ...
  *
- * @author Dmitriy Erokhin d.erokhin@corp.mail.ru
+ * @author Dmitriy Erokhin dim777@ya.ru
  */
 @Component @Slf4j
 public class IntegrationAdaptersRegistry {

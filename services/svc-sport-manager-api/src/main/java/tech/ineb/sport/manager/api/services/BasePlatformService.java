@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 /**
  * This class maintains ...
  *
- * @author Dmitriy Erokhin d.erokhin@corp.mail.ru
+ * @author Dmitriy Erokhin dim777@ya.ru
  */
 @Service @Slf4j
 public class BasePlatformService implements PlatformService {

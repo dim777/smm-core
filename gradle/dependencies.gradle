@@ -1,8 +1,8 @@
 ext {
-    springDependencyManagement = "1.0.11.RELEASE"
-    springBootVersion = "2.4.5"
-    jibVersion = "2.4.0"
-    jooqModelator = "1.0.17"
+    springDependencyManagement = "1.1.0"
+    springBootVersion = "3.0.6"
+    jibVersion = "3.3.1"
+    jooqGenerator = "8.2"
 
     versions = [:]
     libraries = [:]
@@ -11,15 +11,15 @@ ext {
 }
 
 versions += [
-        // compatible with 2.4.5 spring boot
-        spring                 : '5.3.6',
-        lombok                 : '1.18.8',
-        test_containers_version: '1.15.1',
-        swagger                : "2.10.5",
-        mapstruct              : "1.4.1.Final",
-        selenium               : "4.1.3",
-        jooqVersion            : "3.13.5",
-        keycloakVersion        : "18.0.0",
+        // compatible with 3.0.6 spring boot
+        spring               : '6.0.8',
+        lombok               : '1.18.26',
+        testContainersVersion: '1.18.0',
+        swagger              : "3.0.0",
+        mapstruct            : "1.5.5.Final",
+        selenium             : "4.9.0",
+        jooqVersion          : "3.18.2",
+        keycloakVersion      : "21.1.1",
 ]
 
 libraries += [
@@ -28,33 +28,28 @@ libraries += [
         spring_core        : "org.springframework:spring-core:${versions.spring}",
         spring_context     : "org.springframework:spring-context:${versions.spring}",
         spring_jdbc        : "org.springframework:spring-jdbc:${versions.spring}",
-        spring_test        : "org.springframework:spring-test:${versions.spring}",
+        spring_data_commons: "org.springframework.data:spring-data-commons:3.0.5",
         // selenium
         selenium_java      : "org.seleniumhq.selenium:selenium-java:${versions.selenium}",
         selenium_api       : "org.seleniumhq.selenium:selenium-api:${versions.selenium}",
         selenium_chrome    : "org.seleniumhq.selenium:selenium-chrome-driver:${versions.selenium}",
+        selenium_remote    : "org.seleniumhq.selenium:selenium-remote-driver:${versions.selenium}",
 
         swagger2           : "io.springfox:springfox-swagger2:${versions.swagger}",
         swagger_ui         : "io.springfox:springfox-swagger-ui:${versions.swagger}",
         lombok             : "org.projectlombok:lombok:${versions.lombok}",
-        junit              : 'junit:junit:4.13',
-        mockito            : 'org.mockito:mockito-core:3.5.11',
-        gson               : "com.google.code.gson:gson:2.8.5",
-        guava              : "com.google.guava:guava:30.0-jre",
+        gson               : 'com.google.code.gson:gson:2.10.1',
+        hikari             : 'com.zaxxer:HikariCP:5.0.1',
         javaxAnnotation    : 'javax.annotation:javax.annotation-api:1.3.2',
+
         // mapstruct
         mapstruct_core     : "org.mapstruct:mapstruct:${versions.mapstruct}",
         mapstruct_processor: "org.mapstruct:mapstruct-processor:${versions.mapstruct}",
 
         jooq               : "org.jooq:jooq:${versions.jooqVersion}",
-        commonsIo          : "commons-io:commons-io:2.6",
-        postgresql         : "org.postgresql:postgresql:42.2.6",
-
-        // logging
-        slf4j              : "org.slf4j:jcl-over-slf4j:1.7.30",
-        logback            : "ch.qos.logback:logback-classic:1.2.3"
+        postgresql         : "org.postgresql:postgresql:42.5.1",
 ]
 
 testLibraries += [
-        test_containers_kafka: "org.testcontainers:kafka:${versions.test_containers_version}",
+        test_containers_kafka: "org.testcontainers:kafka:${versions.testContainersVersion}",
 ]

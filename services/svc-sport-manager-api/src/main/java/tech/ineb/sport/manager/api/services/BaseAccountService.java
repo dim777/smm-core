@@ -10,7 +10,7 @@ import tech.ineb.sport.lib.common.models.dto.PlatformDTO;
 /**
  * This class maintains ...
  *
- * @author Dmitriy Erokhin d.erokhin@corp.mail.ru
+ * @author Dmitriy Erokhin dim777@ya.ru
  */
 @Service @AllArgsConstructor @Slf4j
 public class BaseAccountService implements AccountService {

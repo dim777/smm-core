@@ -12,7 +12,7 @@ import java.util.function.Function;
 /**
  * This class maintains ...
  *
- * @author Dmitriy Erokhin d.erokhin@corp.mail.ru
+ * @author Dmitriy Erokhin dim777@ya.ru
  */
 @Configuration @Slf4j
 public class DefaultExpiration {

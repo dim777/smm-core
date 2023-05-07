@@ -884,6 +884,13 @@
             "in": "formData",
             "description": "Type of activity. For example - Run, Ride etc.",
             "type": "string",
+            "required": false
+          },
+          {
+            "name": "sport_type",
+            "in": "formData",
+            "description": "Sport type of activity. For example - Run, MountainBikeRide, Ride, etc.",
+            "type": "string",
             "required": true
           },
           {
@@ -929,14 +936,6 @@
             "description": "Set to 1 to mark as commute.",
             "type": "integer",
             "required": false
-          },
-          {
-            "name": "hide_from_home",
-            "in": "formData",
-            "description": "Set to true to mute activity.",
-            "type": "boolean",
-            "required": false,
-            "default": false
           }
         ],
         "tags": [
@@ -964,6 +963,7 @@
                 "elapsed_time": 18373,
                 "total_elevation_gain": 0,
                 "type": "Ride",
+                "sport_type": "MountainBikeRide",
                 "start_date": "2018-02-20T18:02:13Z",
                 "start_date_local": "2018-02-20T10:02:13Z",
                 "timezone": "(GMT-08:00) America/Los_Angeles",
@@ -1054,6 +1054,7 @@
                 "elapsed_time": 4410,
                 "total_elevation_gain": 516,
                 "type": "Ride",
+                "sport_type": "MountainBikeRide",
                 "start_date": "2018-02-16T14:52:54Z",
                 "start_date_local": "2018-02-16T06:52:54Z",
                 "timezone": "(GMT-08:00) America/Los_Angeles",
@@ -1290,6 +1291,7 @@
                 "elapsed_time": 4410,
                 "total_elevation_gain": 516,
                 "type": "Ride",
+                "sport_type": "MountainBikeRide",
                 "start_date": "2018-02-16T14:52:54Z",
                 "start_date_local": "2018-02-16T06:52:54Z",
                 "timezone": "(GMT-08:00) America/Los_Angeles",
@@ -1535,6 +1537,7 @@
                         "elapsed_time": 4500,
                         "total_elevation_gain": 0,
                         "type": "Ride",
+                        "sport_type": "MountainBikeRide",
                         "workout_type": null,
                         "id": 154504250376823,
                         "external_id": "garmin_push_12345678987654321",
@@ -1593,6 +1596,7 @@
                         "elapsed_time": 5400,
                         "total_elevation_gain": 0,
                         "type": "Ride",
+                        "sport_type": "MountainBikeRide",
                         "workout_type": null,
                         "id": 1234567809,
                         "external_id": "garmin_push_12345678987654321",
@@ -1772,10 +1776,30 @@
             "format": "int64"
           },
           {
-            "$ref": "#/parameters/page"
+            "name": "page",
+            "in": "query",
+            "description": "Deprecated. Prefer to use after_cursor.",
+            "type": "integer"
           },
           {
-            "$ref": "#/parameters/perPage"
+            "name": "per_page",
+            "in": "query",
+            "description": "Deprecated. Prefer to use page_size.",
+            "type": "integer",
+            "default": 30
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Number of items per page. Defaults to 30.",
+            "type": "integer",
+            "default": 30
+          },
+          {
+            "name": "after_cursor",
+            "in": "query",
+            "description": "Cursor of the last item in the previous page of results, used to request the subsequent page of results.  When omitted, the first page of results is fetched.",
+            "type": "string"
           }
         ],
         "tags": [
@@ -1803,7 +1827,8 @@
                   "athlete": {
                     "firstname": "Peter",
                     "lastname": "S"
-                  }
+                  },
+                  "cursor": "abc123%20"
                 }
               ]
             }
@@ -1957,11 +1982,11 @@
         ],
         "responses": {
           "200": {
-            "description": "A list of summary athlete representations.",
+            "description": "A list of club athlete representations.",
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "https://developers.strava.com/swagger/athlete.json#/SummaryAthlete"
+                "$ref": "https://developers.strava.com/swagger/athlete.json#/ClubAthlete"
               }
             },
             "examples": {
@@ -2068,7 +2093,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "https://developers.strava.com/swagger/activity.json#/SummaryActivity"
+                "$ref": "https://developers.strava.com/swagger/activity.json#/ClubActivity"
               }
             },
             "examples": {
@@ -2086,6 +2111,7 @@
                   "elapsed_time": 635,
                   "total_elevation_gain": 8.8,
                   "type": "Ride",
+                  "sport_type": "MountainBikeRide",
                   "workout_type": null
                 }
               ]

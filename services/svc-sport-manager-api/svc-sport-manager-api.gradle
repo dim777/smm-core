@@ -23,19 +23,20 @@ dependencies {
     }
     implementation('org.springframework.boot:spring-boot-starter-undertow')
     implementation('org.springframework.boot:spring-boot-starter-security')
+    implementation('org.springframework.boot:spring-boot-starter-validation')
     implementation('org.keycloak:keycloak-spring-boot-starter')
     implementation libraries.selenium_java
     implementation libraries.selenium_api
     implementation libraries.selenium_chrome
-
-    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-remote-driver
-    implementation 'org.seleniumhq.selenium:selenium-remote-driver:4.1.3'
-
+    implementation libraries.selenium_remote
 
     implementation libraries.spring_core
     implementation libraries.spring_aspects
     implementation libraries.spring_context
     implementation libraries.spring_jdbc
+    implementation libraries.spring_data_commons
+    implementation libraries.hikari
+
     implementation libraries.swagger2
     implementation libraries.swagger_ui
     implementation libraries.gson
@@ -44,20 +45,10 @@ dependencies {
     annotationProcessor libraries.mapstruct_processor
 
     implementation 'org.liquibase:liquibase-core'
-    implementation 'com.zaxxer:HikariCP:3.4.5'
-    implementation 'javax.validation:validation-api:2.0.1.Final'
-
-//    implementation 'javax.servlet:javax.servlet-api:3.1.0'
-
-    //todo: move to common versions
-    compile group: 'org.springframework.data', name: 'spring-data-commons', version: '2.4.1'
 
     runtimeOnly libraries.postgresql
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation libraries.spring_test
-    testImplementation libraries.junit
-    testImplementation libraries.mockito
 }
 
 dependencyManagement {
@@ -73,18 +64,9 @@ test {
 jib {
     allowInsecureRegistries = true
     from {
-        image = "tech.ineb:82/razvitie/apps/base/jemalloc-java-dataflow-base:123"
-//        auth {
-//            username = rootProject.ext.nexusUser
-//            password = rootProject.ext.nexusPassword
-//
-//        }
+        image = "openjdk:21-ea-17-slim"
     }
     to {
-        image = "backtest-rest-api:0.1"
-//        auth {
-//            username = rootProject.ext.nexusUser
-//            password = rootProject.ext.nexusPassword
-//        }
+        image = "svc-smm-rest-api:0.1"
     }
 }

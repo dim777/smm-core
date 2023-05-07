@@ -12,7 +12,7 @@ import tech.ineb.sport.manager.api.services.AccountService;
 /**
  * This class maintains ...
  *
- * @author Dmitriy Erokhin d.erokhin@corp.mail.ru
+ * @author Dmitriy Erokhin dim777@ya.ru
  */
 @RestController @RequestMapping(("/api/v1/account"))
 @AllArgsConstructor @Slf4j

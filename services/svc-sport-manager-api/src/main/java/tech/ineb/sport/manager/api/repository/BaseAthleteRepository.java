@@ -2,7 +2,9 @@ package tech.ineb.sport.manager.api.repository;
 
 import lombok.extern.slf4j.Slf4j;
 import org.jooq.DSLContext;
+import org.jooq.JSONB;
 import org.jooq.Record;
+import org.jooq.Record4;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tech.ineb.sport.lib.common.models.dto.AthleteDTO;
@@ -29,7 +31,7 @@ import static tech.ineb.sport.lib.common.models.tables.Platform.PLATFORM;
 /**
  * This class maintains ...
  *
- * @author Dmitriy Erokhin d.erokhin@corp.mail.ru
+ * @author Dmitriy Erokhin dim777@ya.ru
  */
 @Service @Slf4j
 public class BaseAthleteRepository implements AthleteRepository {

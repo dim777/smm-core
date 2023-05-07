@@ -18,7 +18,7 @@ import java.util.UUID;
  * This class maintains ...
  * todo: should be scheduler for cache
  *
- * @author Dmitriy Erokhin d.erokhin@corp.mail.ru
+ * @author Dmitriy Erokhin dim777@ya.ru
  */
 @AllArgsConstructor @Aspect @Component @Slf4j
 public class AuthRegistryAspect {

@@ -15,7 +15,7 @@ import java.util.concurrent.Callable;
 /**
  * This class maintains ...
  *
- * @author Dmitriy Erokhin d.erokhin@corp.mail.ru
+ * @author Dmitriy Erokhin dim777@ya.ru
  */
 @RestController @RequestMapping(("/api/v1/workout"))
 @AllArgsConstructor @Slf4j

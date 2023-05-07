@@ -15,7 +15,7 @@
 ///**
 // * This class maintains ...
 // *
-// * @author Dmitriy Erokhin d.erokhin@corp.mail.ru
+// * @author Dmitriy Erokhin dim777@ya.ru
 // */
 //@AllArgsConstructor @Service @Slf4j
 //public class RemoteAuthService implements AuthService {

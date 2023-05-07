@@ -10,7 +10,7 @@ import java.util.concurrent.CompletableFuture;
 /**
  * This class maintains ...
  *
- * @author Dmitriy Erokhin d.erokhin@corp.mail.ru
+ * @author Dmitriy Erokhin dim777@ya.ru
  */
 public interface SyncService {
   CompletableFuture<AthleteDTO> sync(AthleteWithCredentialsDTO athleteDTO);

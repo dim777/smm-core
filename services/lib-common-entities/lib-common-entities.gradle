@@ -1,30 +1,69 @@
 plugins {
     id 'java'
-    id 'jooq-modelator-plugin' version "$jooqModelator"
+    id 'nu.studer.jooq' version "$jooqGenerator"
 }
 
 dependencies {
     implementation libraries.gson
     implementation libraries.jooq
     runtimeOnly libraries.postgresql
-    jooqModelatorRuntime libraries.postgresql
+    jooqGenerator libraries.postgresql
 }
 
-jooqModelator {
-    jooqVersion = versions.jooqVersion
-    jooqEdition = 'OSS'
-    jooqConfigPath = "$rootDir/services/svc-sport-manager-api/src/main/resources/jooq/jooqConfiguration.xml"
-    jooqOutputPath = "$buildDir/generated"
-    jooqEntitiesPath = "$buildDir/generated/jooq/src/main/java"
-    migrationEngine = 'LIQUIBASE'
-    migrationsPaths = ["$rootDir/services/svc-sport-manager-api/src/main/resources/db/changelog".toString()]
-    dockerTag = 'postgres:14.2'
-    dockerEnv = ['POSTGRES_DB=postgres', 'POSTGRES_USER=postgres', 'POSTGRES_PASSWORD=secret']
-    dockerHostPort = 5432
-    dockerContainerPort = 5432
+jooq {
+    version = versions.jooqVersion
+    edition = nu.studer.gradle.jooq.JooqEdition.OSS
+
+    configurations {
+        main {
+            generateSchemaSourceOnCompilation = true
+
+            generationTool {
+                jdbc {
+                    driver = 'org.postgresql.Driver'
+                    url = 'jdbc:postgresql://localhost:5432/postgres'
+                    user = 'postgres'
+                    password = 'pass'
+                }
+                generator {
+                    name = 'org.jooq.codegen.DefaultGenerator'
+                    database {
+                        name = 'org.jooq.meta.postgres.PostgresDatabase'
+                        inputSchema = 'sm'
+                        forcedTypes {
+                            forcedType {
+                                userType = 'com.google.gson.JsonElement'
+                                binding = 'tech.ineb.sport.lib.common.models.utils.PostgresJSONGsonBinding'
+                                includeExpression = '.*'
+                                includeTypes = '.*jsonb.*'
+                            }
+                            forcedType {
+                                name = 'varchar'
+                                includeExpression = '.*'
+                                includeTypes = 'INET'
+                            }
+                        }
+                        recordVersionFields = 'version'
+                    }
+                    generate {
+                        deprecated = false
+                        daos = true
+                        records = true
+                        pojos = true
+                        fluentSetters = true
+                    }
+                    target {
+                        packageName = 'tech.ineb.sport.lib.common.models'
+                        directory = "$buildDir/generated/jooq/src/main/java"
+                    }
+                    strategy.name = 'org.jooq.codegen.DefaultGeneratorStrategy'
+                }
+            }
+        }
+    }
 }
 
-tasks.build.dependsOn("generateJooqMetamodel")
+tasks.build.dependsOn("generateJooq")
 
 sourceSets {
     main {
@@ -33,5 +72,5 @@ sourceSets {
 }
 
 compileJava {
-    dependsOn("generateJooqMetamodel")
+    dependsOn("generateJooq")
 }

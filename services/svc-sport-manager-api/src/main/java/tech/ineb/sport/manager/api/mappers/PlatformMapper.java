@@ -7,7 +7,7 @@ import tech.ineb.sport.lib.common.models.tables.pojos.Platform;
 /**
  * This class maintains ...
  *
- * @author Dmitriy Erokhin d.erokhin@corp.mail.ru
+ * @author Dmitriy Erokhin dim777@ya.ru
  */
 @Mapper(componentModel = "spring")
 public interface PlatformMapper {

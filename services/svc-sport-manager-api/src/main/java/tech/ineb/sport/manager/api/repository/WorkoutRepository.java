@@ -7,7 +7,7 @@ import java.util.Optional;
 /**
  * This class maintains ...
  *
- * @author Dmitriy Erokhin d.erokhin@corp.mail.ru
+ * @author Dmitriy Erokhin dim777@ya.ru
  */
 public interface WorkoutRepository<ID> {
   Optional<WorkoutDTO> findById(ID id);

@@ -12,7 +12,7 @@ import tech.ineb.sport.manager.api.integration.IntegrationAdaptersRegistry;
 /**
  * This class maintains ...
  *
- * @author Dmitriy Erokhin d.erokhin@corp.mail.ru
+ * @author Dmitriy Erokhin dim777@ya.ru
  */
 @AllArgsConstructor @Configuration @Slf4j
 public class IntegrationAdapterBeanPostProcessor implements BeanPostProcessor {

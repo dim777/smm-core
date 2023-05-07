@@ -15,13 +15,13 @@ import java.util.Objects;
 /**
  * This class maintains ...
  *
- * @author Dmitriy Erokhin d.erokhin@corp.mail.ru
+ * @author Dmitriy Erokhin dim777@ya.ru
  */
 public class PostgresJSONGsonBinding implements Binding<JSONB, JsonElement> {
   // The converter does all the work
   @Override
   public Converter<JSONB, JsonElement> converter() {
-    return new Converter<JSONB, JsonElement>() {
+    return new Converter<>() {
       @Override
       public JsonElement from(JSONB t) {
         return t == null ? JsonNull.INSTANCE : new Gson().fromJson("" + t, JsonElement.class);

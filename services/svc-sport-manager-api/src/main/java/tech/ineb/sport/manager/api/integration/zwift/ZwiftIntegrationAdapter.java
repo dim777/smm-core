@@ -12,7 +12,7 @@ import java.util.concurrent.CompletableFuture;
 /**
  * This class maintains ...
  *
- * @author Dmitriy Erokhin d.erokhin@corp.mail.ru
+ * @author Dmitriy Erokhin dim777@ya.ru
  */
 @Component
 public class ZwiftIntegrationAdapter implements IntegrationAdapter {

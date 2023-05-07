@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
  * This class maintains ...
  * todo: webdriver should be defined as interface (without specific realization)
  *
- * @author Dmitriy Erokhin d.erokhin@corp.mail.ru
+ * @author Dmitriy Erokhin dim777@ya.ru
  */
 @AllArgsConstructor @Component @Slf4j
 public class StravaIntegrationAdapter implements IntegrationAdapter<WebDriver> {

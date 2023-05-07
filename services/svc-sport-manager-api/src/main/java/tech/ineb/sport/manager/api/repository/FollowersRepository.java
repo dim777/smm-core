@@ -8,7 +8,7 @@ import java.util.UUID;
 /**
  * This class maintains ...
  *
- * @author Dmitriy Erokhin d.erokhin@corp.mail.ru
+ * @author Dmitriy Erokhin dim777@ya.ru
  */
 public interface FollowersRepository {
   Page<AthleteDTO> findAllForAthleteId(UUID id);

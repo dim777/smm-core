@@ -13,17 +13,17 @@ services:
     volumes:
       - smm_data_db:/var/lib/postgresql/data
   selenium:
-#    image: selenium/standalone-chrome:100.0
-    image: seleniarm/standalone-chromium:4.1.3-20220412
+    #    image: selenium/standalone-chrome:100.0
+    image: seleniarm/standalone-chromium:112.0
     networks:
       - ineb_tech
     ports:
       - "4444:4444"
       - "6900:5900"
   keycloack:
-#    image: quay.io/keycloak/keycloak:18.0.0
-#    image: jboss/keycloak:16.1.1
-    image: keycloack:EAP-linux-arm64-0.0.1
+    image: quay.io/keycloak/keycloak:21.1.1
+    #image: keycloack:EAP-linux-arm64-0.0.1
+    #image: jboss/keycloak:16.1.1
     networks:
       - ineb_tech
     depends_on:
@@ -31,10 +31,10 @@ services:
     environment:
       KEYCLOAK_USER: admin
       KEYCLOAK_PASSWORD: pass
-#      DB_ADDR: smm_db
-#      DB_PORT: 5432
-#      DB_USER: postgres
-#      DB_PASSWORD: pass
+    #      DB_ADDR: smm_db
+    #      DB_PORT: 5432
+    #      DB_USER: postgres
+    #      DB_PASSWORD: pass
 
     ports:
       - "8080:8080"

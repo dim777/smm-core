@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * This class maintains ...
  *
- * @author Dmitriy Erokhin d.erokhin@corp.mail.ru
+ * @author Dmitriy Erokhin dim777@ya.ru
  */
 @Configuration
 public class UndertowEmbeddedServletContainerConfig {

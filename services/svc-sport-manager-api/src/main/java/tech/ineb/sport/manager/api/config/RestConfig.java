@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * This class maintains ...
  *
- * @author Dmitriy Erokhin d.erokhin@corp.mail.ru
+ * @author Dmitriy Erokhin dim777@ya.ru
  */
 @Configuration
 public class RestConfig {

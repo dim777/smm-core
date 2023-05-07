@@ -12,6 +12,7 @@ plugins {
     id 'org.springframework.boot' version "$springBootVersion"
     id 'io.spring.dependency-management' version "$springDependencyManagement"
     id 'java'
+    id 'org.liquibase.gradle' version "$liquibaseVersion"
 }
 
 dependencies {
@@ -24,7 +25,8 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter-undertow')
     implementation('org.springframework.boot:spring-boot-starter-security')
     implementation('org.springframework.boot:spring-boot-starter-validation')
-    implementation('org.keycloak:keycloak-spring-boot-starter')
+    implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
+    implementation('org.springframework.boot:spring-boot-starter-oauth2-resource-server')
     implementation libraries.selenium_java
     implementation libraries.selenium_api
     implementation libraries.selenium_chrome
@@ -42,10 +44,9 @@ dependencies {
     implementation libraries.gson
     implementation libraries.jooq
     implementation libraries.mapstruct_core
-    annotationProcessor libraries.mapstruct_processor
-
     implementation 'org.liquibase:liquibase-core'
 
+    annotationProcessor libraries.mapstruct_processor
     runtimeOnly libraries.postgresql
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -57,7 +58,7 @@ dependencyManagement {
     }
 }
 
-test {
+tasks.named('test') {
     useJUnitPlatform()
 }
 
@@ -67,6 +68,6 @@ jib {
         image = "openjdk:21-ea-17-slim"
     }
     to {
-        image = "svc-smm-rest-api:0.1"
+        image = "ineb.tech/svc-smm-rest-api:0.1"
     }
 }

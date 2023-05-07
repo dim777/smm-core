@@ -5,7 +5,7 @@ databaseChangeLog:
       comment: initial schema
       changes:
         - sqlFile:
-            path: sql/changelog-0.1.sql
+            path: changelog/sql/changelog-0.1.sql
             relativeToChangelogFile: true
   - changeSet:
       id: 0.2
@@ -13,22 +13,14 @@ databaseChangeLog:
       comment: initial ddl
       changes:
         - sqlFile:
-            path: sql/changelog-0.2.sql
+            path: changelog/sql/changelog-0.2.sql
             relativeToChangelogFile: true
   - changeSet:
-      id: 0.3
-      comment: create hypertables
-      author: dim777
-      changes:
-        - sqlFile:
-            path: sql/changelog-0.3.sql
-            relativeToChangelogFile: true
-  - changeSet:
-      id: 0.3.1
+      id: 0.2.1
       context: test
       comment: test data
       author: dim777
       changes:
         - sqlFile:
-            path: sql/changelog-test-0.3.sql
+            path: changelog/sql/changelog-test-0.2.sql
             relativeToChangelogFile: true

@@ -3,6 +3,7 @@ ext {
     springBootVersion = "3.0.6"
     jibVersion = "3.3.1"
     jooqGenerator = "8.2"
+    liquibaseVersion = '2.0.4'
 
     versions = [:]
     libraries = [:]

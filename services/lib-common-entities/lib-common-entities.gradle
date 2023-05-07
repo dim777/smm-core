@@ -63,14 +63,8 @@ jooq {
     }
 }
 
-tasks.build.dependsOn("generateJooq")
-
 sourceSets {
     main {
         java.srcDirs += ["${buildDir}/generated/jooq/src/main/java"]
     }
-}
-
-compileJava {
-    dependsOn("generateJooq")
 }

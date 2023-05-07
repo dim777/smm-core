@@ -15,23 +15,26 @@ import java.net.URL;
  *
  * @author Dmitriy Erokhin dim777@ya.ru
  */
-@Configuration @Slf4j
+@Configuration
+@Slf4j
 public class WebDriverFactory extends AbstractFactoryBean<WebDriver> {
-  public WebDriverFactory() {
-    setSingleton(false);
-  }
+    public WebDriverFactory() {
+        setSingleton(false);
+    }
 
-  @Override public Class<?> getObjectType() {
-    return WebDriver.class;
-  }
+    @Override
+    public Class<?> getObjectType() {
+        return WebDriver.class;
+    }
 
-  @Override protected WebDriver createInstance() throws Exception {
-    final URL url = new URL("http://localhost:4444");
-    final ChromeOptions chromeOptions = new ChromeOptions();
-    RemoteWebDriver driver = new RemoteWebDriver(url, chromeOptions);
-    log.info("Initialized WebDriver = '{}'", driver);
-    return driver;
-  }
+    @Override
+    protected WebDriver createInstance() throws Exception {
+        final URL url = new URL("http://localhost:4444");
+        final ChromeOptions chromeOptions = new ChromeOptions();
+        RemoteWebDriver driver = new RemoteWebDriver(url, chromeOptions);
+        log.info("Initialized WebDriver = '{}'", driver);
+        return driver;
+    }
 
 
 //  @Override protected WebDriver createInstance() throws Exception {

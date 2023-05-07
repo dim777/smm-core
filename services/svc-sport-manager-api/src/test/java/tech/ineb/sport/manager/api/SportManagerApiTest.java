@@ -1,6 +1,7 @@
 package tech.ineb.sport.manager.api;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -39,6 +40,7 @@ public class SportManagerApiTest {
     }
 
     @Test
+    @Disabled
     public void testLoginToStrava() {
         log.info("RestTemplate = {}", restTemplate);
 

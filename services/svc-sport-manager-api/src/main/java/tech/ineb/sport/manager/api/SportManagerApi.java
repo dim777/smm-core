@@ -12,10 +12,11 @@ import java.time.LocalDateTime;
  *
  * @author Dmitriy Erokhin dim777@ya.ru
  */
-@SpringBootApplication @Slf4j
+@SpringBootApplication
+@Slf4j
 public class SportManagerApi {
-  public static void main(String[] args) {
-    ApplicationContext ctx = SpringApplication.run(SportManagerApi.class, args);
-    log.info("Application {} is loaded in {}.", ctx.getApplicationName(), LocalDateTime.now());
-  }
+    public static void main(String[] args) {
+        ApplicationContext ctx = SpringApplication.run(SportManagerApi.class, args);
+        log.info("Application {} is loaded in {}.", ctx.getApplicationName(), LocalDateTime.now());
+    }
 }

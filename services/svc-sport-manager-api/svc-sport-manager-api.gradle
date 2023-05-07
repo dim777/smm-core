@@ -27,6 +27,12 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter-validation')
     implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
     implementation('org.springframework.boot:spring-boot-starter-oauth2-resource-server')
+
+    implementation 'io.opentelemetry:opentelemetry-api:1.26.0'
+    implementation 'io.opentelemetry:opentelemetry-sdk:1.26.0'
+    implementation 'io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi:1.26.0'
+    implementation 'io.opentelemetry:opentelemetry-sdk-metrics:1.26.0'
+
     implementation libraries.selenium_java
     implementation libraries.selenium_api
     implementation libraries.selenium_chrome
